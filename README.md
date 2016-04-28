@@ -7,14 +7,21 @@ Clone this git Repository in your Computer and open the command prompt and go to
     cd F:/magarticles 
     f:
     composer install
-After installing rename '.env.example' to '.env' fill out your database credentials and run following command
+After installing, rename '.env.example' to '.env' and CACHE_DRIVER should be set to array, fill out your database credentials and run following command
 
     php artisan migrate:refresh --seed 
     php artisan serve
 Now you can access your project at localhost:8000 
+
+    username: admin@admin.com
+    password: admin
+
 ###Pre Requisites
 php and composer should be installed and setup in path variables.
 ##Contact Me
  You can contact me at 'musmanakram at ciitlahore dot edu dot pk' or at http://www.usman-blog.com 
+ 
+ Demo available at articles.usman-blog.com 
+ 
  
  

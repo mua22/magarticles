@@ -13,6 +13,7 @@ class EventsController extends Controller
 {
     public function calendar()
     {
+        ini_set('xdebug.max_nesting_level', 200);
         return view('site.events.calendar');
     }
 
