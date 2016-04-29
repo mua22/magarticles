@@ -29,15 +29,4 @@ class Category extends Model implements SluggableInterface
     public function countCaches() {
         return ['child_count' => [Category::class, 'parent_id', 'id']];
     }
-
-    public static function getSelectlist()
-    {
-        $categories = Category::with('descendants')->get(['id','name','node_depth']);
-        $cats = array();
-        //dd($categories);
-        foreach($categories as $categor)
-            $cats[$categor->id] = str_repeat(" | - ",(int)$categor->node_depth).$categor->name;
-        return $cats;
-    }
-
 }
