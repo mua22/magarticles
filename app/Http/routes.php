@@ -30,10 +30,7 @@ Route::group(['middleware' => ['web']], function () {
         'uses'=>'FrontEnd\EventsController@getAjaxEvents',
         'as'=>'events.calendar.ajax'
     ));
-    Route::get('articles/create/{any?}',array(
-        'uses' => 'FrontEnd\ArticlesController@create',
-        'as'=>'frontend.articles.create'
-    ))->where('any', '(.*)?');
+
     Route::get('articles/{any?}',array(
         'uses' => 'FrontEnd\ArticlesController@show',
         'as'=>'frontend.articles.show'
@@ -62,21 +59,21 @@ Route::group(['middleware' => ['web']], function () {
         'auth'=>'Auth\AuthController',
         'password'=>'Auth\PasswordController'
     ]);
-});
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+        Route::auth();
 
-    //Route::get('/backend', 'Admin\AdminController@welcome');
-
-    /**
-     * All Admin routes Goes here
-     */
-
-    Route::group(['middleware' => ['role:admin']], function() {
-            Route::get('backend', 'Admin\AdminController@welcome');
+    // All web based admin backend routes starts from here.
+    Route::group(['prefix' => 'backend', 'middleware' => ['role:admin']], function() {
+        
+        Route::get('welcome', ['as' => 'backend.welcome', 'uses' => 'Admin\AdminController@welcome']);
+        
+        Route::get('articles/create',
+            [ 'as'=>'backend.admin.articles.create', 'uses' => 'Admin\ArticlesController@create']);
+        Route::post('articles/create',
+            [ 'as'=>'backend.admin.articles.store', 'uses' => 'Admin\ArticlesController@store']);
 
     });
+
 });
 
 

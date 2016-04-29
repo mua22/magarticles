@@ -55,7 +55,7 @@
                                 </li>
 
                                         <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout {{ Auth::user()->name }}</a></li>
-                                <li><a href="{{ url('/backend') }}">Backend</a></li>
+                                <li><a href="{{ url('/backend/welcome') }}">Backend</a></li>
 
                             @endif
                         </ul>
