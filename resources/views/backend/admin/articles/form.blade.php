@@ -25,5 +25,9 @@
 		</div>
 		<input type="hidden" name="user_id" value="{{Auth::user()->id}}"></input>
 		<input type="hidden" name="_token" value="{{csrf_token()}}"></input>
+
+		@if(isset($article))
+			<input type="hidden" name="_method" value="put">
+		@endif
     </div>
 </form>
