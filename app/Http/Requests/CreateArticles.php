@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Requests;
+<?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
@@ -26,7 +24,6 @@ class CreateArticles extends Request
         return [
             'title'=>'required|min:3',
             'body'=>'required',
-            'published_at'=>'required|date'
         ];
     }
 }

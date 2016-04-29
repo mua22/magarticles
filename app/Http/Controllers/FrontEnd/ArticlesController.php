@@ -46,22 +46,6 @@ class ArticlesController extends Controller
         return view('site.articles.show',compact('article'));
     }
 
-    public function create($tree_slug=null){
-        //return "test";
-        $tags = Tag::lists('name','id');
-        $tags;
-        $categories = Category::getSelectlist();
-
-        $selected_id =  null;
-        if($tree_slug!=null)
-        {
-            $category = Category::findByTreeSlug($tree_slug);
-            $selected_id=$category->id;
-        }
-        ini_set('xdebug.max_nesting_level', 200);
-        return view('site.articles.create',compact('tags','categories','selected_id'));
-    }
-
     public function store(Requests\CreateArticles $request)
     {
         //return Auth::user()->articles;
