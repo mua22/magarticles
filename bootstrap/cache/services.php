@@ -32,6 +32,7 @@
     28 => 'YAAP\\Theme\\ThemeServiceProvider',
     29 => 'Zizaco\\Entrust\\EntrustServiceProvider',
     30 => 'DaveJamesMiller\\Breadcrumbs\\ServiceProvider',
+    31 => 'App\\Providers\\RepositoryProvider',
   ),
   'eager' => 
   array (
@@ -143,6 +144,8 @@
     'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'Laravel\\Socialite\\Contracts\\Factory' => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    'command.repository.make' => 'App\\Providers\\RepositoryProvider',
+    'command.criteria.make' => 'App\\Providers\\RepositoryProvider',
   ),
   'when' => 
   array (
@@ -186,6 +189,9 @@
     array (
     ),
     'Laravel\\Socialite\\SocialiteServiceProvider' => 
+    array (
+    ),
+    'App\\Providers\\RepositoryProvider' => 
     array (
     ),
   ),

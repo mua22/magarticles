@@ -160,6 +160,7 @@ return [
         'YAAP\Theme\ThemeServiceProvider',
         Zizaco\Entrust\EntrustServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        App\Providers\RepositoryProvider::class
     ],
 
     /*
