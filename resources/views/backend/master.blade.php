@@ -60,6 +60,10 @@
 				<ul class="sidebar-menu">
 					<li class="header">MAIN NAVIGATION</li>
 					<li>
+						<a href="{{route('backend.users.index')}}">
+							<i class="fa fa-users"></i><span>Users</span>
+							<small class="label pull-right bg-green">new</small>
+						</a>
 						<a href="{{route('backend.admin.articles.create')}}">
 							<i class="fa fa-users"></i><span>Create Articles</span>
 							<small class="label pull-right bg-green">new</small>
@@ -71,7 +75,22 @@
 
 		<!-- main content area -->
 		<div class="content-wrapper">
-			@yield('content')
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">@yield('title')</h3>
+				</div>
+				<div class="box-body">
+
+						@if(Session::has('flash_message'))
+							<div class="alert alert-success">
+								{{Session::get('flash_message')}}
+							</div>
+						@endif
+
+					@yield('content')
+				</div>
+			</div>
+
 		</div>
 	</div>
 

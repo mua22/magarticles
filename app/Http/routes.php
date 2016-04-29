@@ -71,7 +71,8 @@ Route::group(['middleware' => ['web']], function () {
             [ 'as'=>'backend.admin.articles.create', 'uses' => 'Admin\ArticlesController@create']);
         Route::post('articles/create',
             [ 'as'=>'backend.admin.articles.store', 'uses' => 'Admin\ArticlesController@store']);
-
+        Route::resource('users', 'Admin\UsersController');
+        Route::resource('tags', 'Admin\TagsController');
     });
 
 });

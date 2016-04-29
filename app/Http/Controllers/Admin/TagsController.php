@@ -6,30 +6,21 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Repositories\UsersRepository as User;
+use App\Repositories\TagsRepository as Tag;
 
-class UsersController extends AppController
+class TagsController extends AppController
 {
-    /**
-     * UsersController constructor.
-     */
-    //private $user;
-    public function __construct(User $user)
+    public function __construct(Tag $tag)
     {
-        parent::__construct($user);
+        parent::__construct($tag);
         //$this->user = $user;
     }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function index()
-    {
-        $records = $this->user->all();
-        return view('backend.users.index')->with(compact('records'));
-    }*/
+
 
     /**
      * Show the form for creating a new resource.
