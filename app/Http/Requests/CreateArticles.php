@@ -24,6 +24,8 @@ class CreateArticles extends Request
         return [
             'title'=>'required|min:3',
             'body'=>'required',
+            'tags' => 'required',
+            'category_id' => 'required'
         ];
     }
 }
