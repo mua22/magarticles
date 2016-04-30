@@ -1,6 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Illuminate\Contracts\Validation\Validator;
 
 class CreateArticles extends Request
 {
@@ -27,5 +28,9 @@ class CreateArticles extends Request
             'tags' => 'required',
             'category_id' => 'required'
         ];
+    }
+
+    protected function formatErrors(Validator $validator) {
+        return $validator->errors()->all();
     }
 }

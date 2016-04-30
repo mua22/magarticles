@@ -18,7 +18,7 @@
 		</div>
 		<div class="form-group">
 			{{Form::label('Tags','Tags:')}}
-			{{Form::select('tags[]', $tagsList, isset($article) ? $article->tags->lists('name', 'id') : null, ['class'=>'form-control','multiple'])}}
+			{{Form::select('tags[]', $tagsList, isset($article->id) ? $article->tags()->lists('id', 'id')->toArray() : [null], ['class'=>'form-control','multiple'])}}
 		</div>
 		<div class="form-group">
 			{{Form::submit('Submit',['class'=>'btn btn-primary form-control'])}}

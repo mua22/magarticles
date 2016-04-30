@@ -61,6 +61,7 @@ class ArticlesController extends Controller
     public function edit($id)
     {
         $article = $this->articlesRepo->find($id);
+
         if($article) {
         	$tagsList = $this->tagsRepo->lists('name', 'id');
         	$categoryList = $this->categoryRepo->getSelectlist();
@@ -76,10 +77,13 @@ class ArticlesController extends Controller
     	$article = $this->articlesRepo->find($id);
 
     	if($article) {
-    		$input = $request->all();
+    		$input = $request->except(['_token', '_method']);
     		$article = $this->articlesRepo->update($input, $id);
-    		\Session::flash('flash_message', $article->title. 'Article updated');
-    		return redirect()->route('backend.articles.index');
+
+            if($article) {
+                \Session::flash('flash_message', 'Article updated');
+                return redirect()->route('backend.articles.edit', $id);
+            }
     	} else {
     		\Session::flash('flash_message','Failed to update article');
     		return redirect()->route('backend.articles.index');
