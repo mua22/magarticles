@@ -15,7 +15,13 @@ Now you can access your project at localhost:8000
 
     username: admin@admin.com
     password: admin
+##Commands Available 
+Apart from usual php artisan commands you can try following 
 
+    php artisan make:view Tag
+    php artisan make:view Tag -f backend
+    Tag is the model name and backend is the folder which you want to use to create views inside. 
+    e.g. -f backend.admin would create views inside backend\admin\tags folder
 ###Pre Requisites
 php and composer should be installed and setup in path variables.
 ##Contact Me
