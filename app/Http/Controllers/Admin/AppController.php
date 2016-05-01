@@ -10,7 +10,7 @@ use App\Repositories\Eloquent\Repository as Repository;
 
 class AppController extends Controller
 {
-    private $repository;
+    protected $repository;
     public function __construct(Repository $repository)
     {
         $this->repository = $repository;

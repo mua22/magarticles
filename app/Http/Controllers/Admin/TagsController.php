@@ -20,6 +20,11 @@ class TagsController extends AppController
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        $records = $this->repository->all();
+        return view('backend.tags.index')->with(compact('records'));
+    }
 
 
     /**
