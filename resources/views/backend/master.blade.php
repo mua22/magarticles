@@ -64,10 +64,14 @@
 							<i class="fa fa-users"></i><span>Users</span>
 							<small class="label pull-right bg-green">new</small>
 						</a>
-						<a href="{{route('backend.admin.articles.create')}}">
-							<i class="fa fa-users"></i><span>Create Articles</span>
-							<small class="label pull-right bg-green">new</small>
-						</a>
+					</li>
+					<li class="treeview">
+						<a href="#"><i class="fa fa-pie-chart"></i><span>Articles</span><i class="fa fa-angle-left pull-right"></i></a>
+						<ul style="display: none;" class="treeview-menu">
+							<li><a href="{{route('backend.articles.index')}}"><i class="fa fa-circle-o"></i> Index</a></li>
+							<li><a href="{{route('backend.articles.create')}}"><i class="fa fa-circle-o"></i> Create Article</a></li>
+						</ul>
+					</li>
 					</li>
 				</ul>
 			</section>
@@ -87,6 +91,15 @@
 							</div>
 						@endif
 
+						@if (count($errors) > 0)
+							<div class="alert alert-danger">
+								<ul>
+									@foreach ($errors->all() as $error)
+										<li>{{$error}}</li>
+									@endforeach
+								</ul>
+							</div>
+						@endif
 					@yield('content')
 				</div>
 			</div>
