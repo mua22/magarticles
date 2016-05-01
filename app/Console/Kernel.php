@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\Inspire::class,
         Commands\MakeCriteriaCommand::class,
-        Commands\MakeRepositoryCommand::class
+        Commands\MakeRepositoryCommand::class,
+        Commands\AdminViewsCommand::class
     ];
 
     /**
