@@ -1,7 +1,7 @@
 @extends('backend.master')
-@section('content')
+@section('title')
 	 Editing {{$record->name}}
 @stop
 @section('content')
-	@include('backend.tags.form', ['record' => $record])
+	@include('backend.tags._form', ['record' => $record])
 @stop

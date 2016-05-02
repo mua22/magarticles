@@ -6,15 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Repositories\TagsRepository as Tag;
+use App\Tag;
+use Illuminate\Support\Facades\Session;
 
-class TagsController extends AppController
+class TagsController extends Controller
 {
-    public function __construct(Tag $tag)
-    {
-        parent::__construct($tag);
-        //$this->user = $user;
-    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +19,7 @@ class TagsController extends AppController
      */
     public function index()
     {
-        $records = $this->repository->all();
+        $records = Tag::all();
         return view('backend.tags.index')->with(compact('records'));
     }
 
@@ -34,7 +31,7 @@ class TagsController extends AppController
      */
     public function create()
     {
-        //
+        return view('backend.tags.create');
     }
 
     /**
@@ -45,6 +42,16 @@ class TagsController extends AppController
      */
     public function store(Request $request)
     {
+        $input = $request->all();
+        $tag = \App\Tag::create($input);
+        if($tag)
+        {
+            \Session::flash('flash_message','Tag Created Successfully');
+            return redirect()->route('backend.tags.index');
+        } else {
+            \Session::flash('flash_message','Tag was not Created');
+            return redirect()->route('backend.tags.create');
+        }
         //
     }
 
@@ -67,7 +74,8 @@ class TagsController extends AppController
      */
     public function edit($id)
     {
-        //
+        $record = \App\Tag::findOrfail($id);
+        return view('backend.tags.edit')->with(compact('record'));
     }
 
     /**
@@ -79,7 +87,15 @@ class TagsController extends AppController
      */
     public function update(Request $request, $id)
     {
-        //
+        $tag = \App\Tag::findOrFail($id);
+        $tag = $tag->fill($request->all())->save();
+        if($tag) {
+            \Session::flash('flash_message', 'Tag Created Updated');
+            return redirect()->route('backend.tags.index');
+        }else {
+            \Session::flash('flash_message', 'Something Went Wrong');
+            return redirect()->route('backend.tags.edit',$id);
+        }
     }
 
     /**
@@ -90,6 +106,14 @@ class TagsController extends AppController
      */
     public function destroy($id)
     {
-        //
+        $tag = \App\Tag::find($id);
+        if($tag) {
+            $tag->delete($id);
+            \Session::flash('flash_message', 'Tag deleted');
+            return redirect()->route('backend.tags.index');
+        } else {
+            \Session::flash('flash_message','Failed to delete Tag');
+            return redirect()->route('backend.tags.index');
+        }
     }
 }

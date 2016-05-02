@@ -8,4 +8,8 @@
 		@if(isset($record))
 			<input type="hidden" name="_method" value="put">
 		@endif
+<div class="form-group">
+			{{Form::submit('Submit',['class'=>'btn btn-primary form-control'])}}
+		</div>
+
 </form>

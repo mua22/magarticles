@@ -1,7 +1,7 @@
 @extends('backend.master')
-@section('content')
+@section('title')
 	Create New tag
 @stop
 @section('content')
-	@include('backend.tags.form')
+	@include('backend.tags._form')
 @stop

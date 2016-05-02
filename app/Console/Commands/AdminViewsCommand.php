@@ -88,8 +88,16 @@ class AdminViewsCommand extends Command
         $content.="\t\t\t<tr>\n";
         foreach($coloumns as $coloumn)
             $content.="\t\t\t\t<td>{{".'$record->'.$coloumn.'}}</td>'."\n";
-        $content .="\t\t\t\t<td>".'<a class="btn btn-info btn-sm" href="{{route(\'backend.'.$model->getTable().'.edit\', $record->id)}}">Update</a>'."</td>\n";
-        //$content .="\t\t\t\t<td>".'<a class="btn btn-info btn-sm" href="\edit\{{$record->id}}">Update</a>'."</td>\n";
+        $content .="\t\t\t\t<td>".'<a class="btn btn-info btn-sm" href="{{route(\'backend.'.$model->getTable().'.edit\', $record->id)}}">Update</a>'."\n";
+        $content .="\t\t\t<form action=\"{{ route('backend.".$model->getTable().".destroy',\$record->id) }}\" method=\"POST\">
+						{!! csrf_field() !!}
+						{!! method_field('DELETE') !!}
+
+						<button type=\"submit\" id=\"delete-task-{{ \$record->id }}\" class=\"btn btn-danger btn-sm\">
+							<i class=\"fa fa-btn fa-trash\"></i>Delete
+						</button>
+					</form></td>\n";
+
         $content.="\t\t\t</tr>\n";
         $content .="\t\t@endforeach\n";
 
@@ -118,6 +126,9 @@ class AdminViewsCommand extends Command
 		@if(isset($record))
 			<input type="hidden" name="_method" value="put">
 		@endif';
+        $content .= "\n<div class=\"form-group\">
+			{{Form::submit('Submit',['class'=>'btn btn-primary form-control'])}}
+		</div>\n";
         $content.="\n</form>";
         file_put_contents($directory.DIRECTORY_SEPARATOR.'_form.blade.php',$content);
 
@@ -127,10 +138,10 @@ class AdminViewsCommand extends Command
     {
         $last_part = str_replace(DIRECTORY_SEPARATOR,'.', substr(strrchr($directory, "views"), 6));
         $content = "@extends('backend.master')\n";
-        $content .="@section('content')\n\tCreate New ".Inflector::singularize($model->getTable())."\n";
+        $content .="@section('title')\n\tCreate New ".Inflector::singularize($model->getTable())."\n";
         $content .="@stop\n";
         $content .="@section('content')\n";
-        $content .="\t@include('$last_part.form')\n";
+        $content .="\t@include('$last_part._form')\n";
         $content .="@stop";
         file_put_contents($directory.DIRECTORY_SEPARATOR.'create.blade.php',$content);
     }
@@ -138,10 +149,10 @@ class AdminViewsCommand extends Command
     {
         $last_part = str_replace(DIRECTORY_SEPARATOR,'.', substr(strrchr($directory, "views"), 6));
         $content = "@extends('backend.master')\n";
-        $content .="@section('content')\n\t Editing ".'{{$record->name}}'."\n";
+        $content .="@section('title')\n\t Editing ".'{{$record->name}}'."\n";
         $content .="@stop\n";
         $content .="@section('content')\n";
-        $content .="\t@include('$last_part.form', ['record' => \$record])\n";
+        $content .="\t@include('$last_part._form', ['record' => \$record])\n";
         $content .="@stop";
         file_put_contents($directory.DIRECTORY_SEPARATOR.'edit.blade.php',$content);
     }
