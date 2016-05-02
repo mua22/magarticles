@@ -88,8 +88,8 @@ class AdminViewsCommand extends Command
         $content.="\t\t\t<tr>\n";
         foreach($coloumns as $coloumn)
             $content.="\t\t\t\t<td>{{".'$record->'.$coloumn.'}}</td>'."\n";
-        $content .="\t\t\t\t<td>".'<a class="btn btn-info btn-sm" href="{{route(\'backend.'.$model->getTable().'.edit\', $record->id)}}">Update</a>'."\n";
-        $content .="\t\t\t<form action=\"{{ route('backend.".$model->getTable().".destroy',\$record->id) }}\" method=\"POST\">
+        $content .="\t\t\t\t<td>".'<a class="btn btn-info btn-sm" href="{{route(\'backend.'.$model->getTable().'.edit\', $record->id)}}"><i class="fa fa-btn fa-edit"></i>Update</a>'."\n";
+        $content .="\t\t\t<form action=\"{{ route('backend.".$model->getTable().".destroy',\$record->id) }}\" method=\"POST\" class='inline'>
 						{!! csrf_field() !!}
 						{!! method_field('DELETE') !!}
 

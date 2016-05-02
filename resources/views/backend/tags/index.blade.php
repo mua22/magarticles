@@ -17,8 +17,8 @@
 				<td>{{$record->slug}}</td>
 				<td>{{$record->created_at}}</td>
 				<td>{{$record->updated_at}}</td>
-				<td><a class="btn btn-info btn-sm" href="{{route('backend.tags.edit', $record->id)}}">Update</a>
-			<form action="{{ route('backend.tags.destroy',$record->id) }}" method="POST">
+				<td><a class="btn btn-info btn-sm" href="{{route('backend.tags.edit', $record->id)}}"><i class="fa fa-btn fa-edit"></i>Update</a>
+			<form action="{{ route('backend.tags.destroy',$record->id) }}" method="POST" class='inline'>
 						{!! csrf_field() !!}
 						{!! method_field('DELETE') !!}
 
