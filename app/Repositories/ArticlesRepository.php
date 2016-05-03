@@ -36,7 +36,7 @@ class ArticlesRepository extends Repository
         unset($data['tags']);
         if($article) {
             $article->update($data);
-            $article->tags()->attach($tags);
+            $article->tags()->sync($tags);
             return $article;
         }
     }
