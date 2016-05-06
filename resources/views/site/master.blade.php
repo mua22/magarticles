@@ -35,38 +35,89 @@
         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1685796441681454";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
 <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{route('home')}}">magArticles</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#" >My Profile</a>
+            </li>
+
+            <li>
+                <a href="{{route('home')}}">Contact</a>
+            </li>
+            <li><a href="{{ url('/backend/welcome') }}">Backend</a></li>
+
+
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Article<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{{route('home')}}">Article 1</a>
+                    </li>
+                    <li>
+                        <a href="{{route('home')}}">Article 2</a>
+                    </li>
+                    <li>
+                        <a href="{{route('home')}}">Article 3</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li><a href="{{ url('/login') }}">Login</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="full-width.html">Recent Articles</a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <header id="header">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <!-- start header top -->
-                <div class="header_top">
-                    <div class="header_top_left">
-                        <ul class="top_nav">
-                            <li><a href="{{route('home')}}">Home</a></li>
-                            @if (Auth::guest())
-                                <li><a href="{{ url('/login') }}">Login</a></li>
-                                <li><a href="{{ url('/register') }}">Register</a></li>
-                            @else
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                         My Profile
-                                    </a>
-                                </li>
-
-                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout {{ Auth::user()->name }}</a></li>
-                                <li><a href="{{ url('/backend/welcome') }}">Backend</a></li>
-
-                            @endif
-                        </ul>
-                    </div>
-                    <div class="header_top_right">
-                        <form class="search_form">
-                            <input type="text" placeholder="Text to Search">
-                            <input type="submit" value="">
-                        </form>
-                    </div>
-                </div><!-- End header top -->
+               
                 <!-- start header bottom -->
                 <div class="header_bottom">
                     <div class="header_bottom_left">
@@ -79,6 +130,15 @@
                             mag<strong>Articles</strong> <span>Have a Tip: Tell Others</span>
                         </a>
                     </div>
+                    <div class="header_top">
+
+                        <div class="header_top_right">
+                            <form class="search_form">
+                                <input type="text" placeholder="Text to Search">
+                                <input type="submit" value="">
+                            </form>
+                        </div>
+                    </div><!-- End header top -->
                     <div class="header_bottom_right">
                         <a href="#"><img src="img/addbanner_728x90_V1.jpg" alt="img"></a>
                     </div>
