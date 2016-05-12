@@ -41,31 +41,76 @@
             <div class="col-lg-12 col-md-12">
                 <!-- start header top -->
                 <div class="header_top">
-                    <div class="header_top_left">
-                        <ul class="top_nav">
-                            <li><a href="{{route('home')}}">Home</a></li>
-                            @if (Auth::guest())
-                                <li><a href="{{ url('/login') }}">Login</a></li>
-                                <li><a href="{{ url('/register') }}">Register</a></li>
-                            @else
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                         My Profile
-                                    </a>
-                                </li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout {{ Auth::user()->name }}</a></li>
-                                <li><a href="{{ url('/backend/welcome') }}">Backend</a></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{route('home')}}">Home</a></li>
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                My Profile
+                            </a>
+                        </li>
 
-                            @endif
+                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout {{ Auth::user()->name }}</a></li>
+                        <li><a href="{{ url('/backend') }}">Backend</a></li>
+
+                    @endif
+
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Articles <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="blog-home-1.html">Articles 1</a>
+                            </li>
+                            <li>
+                                <a href="blog-home-2.html">Articles 2</a>
+                            </li>
+                            <li>
+                                <a href="blog-post.html">Articles</a>
+                            </li>
                         </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="full-width.html">Recent Article</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+
+
+
+
+
+    <header id="header">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <!-- start header top -->
+                <div class="header_top">
+                    <div class="header_top_left">
+
                     </div>
-                    <div class="header_top_right">
-                        <form class="search_form">
-                            <input type="text" placeholder="Text to Search">
-                            <input type="submit" value="">
-                        </form>
-                    </div>
+
                 </div><!-- End header top -->
                 <!-- start header bottom -->
                 <div class="header_bottom">
@@ -78,6 +123,12 @@
                         <a class="logo" href="{{route('home')}}">
                             mag<strong>Articles</strong> <span>Have a Tip: Tell Others</span>
                         </a>
+                    </div>
+                    <div class="header_top_right">
+                        <form class="search_form">
+                            <input type="text" placeholder="Text to Search">
+                            <input type="submit" value="">
+                        </form>
                     </div>
                     <div class="header_bottom_right">
                         <a href="#"><img src="img/addbanner_728x90_V1.jpg" alt="img"></a>
@@ -118,14 +169,17 @@
     <section id="mainContent">
         <dic class="content_bottom">
             <div class="col-lg-9">
+
                 <div class="content_bottom_left">
                     <div class="single_page_area">
+
                         @yield('breadcrumb')
                         @if(Session::has('flash_message'))
                             <div class="alert alert-success">
                                 {{Session::get('flash_message')}}
                             </div>
                         @endif
+
                         @yield('content')
                     </div>
                 </div>
