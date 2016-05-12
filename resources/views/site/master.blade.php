@@ -42,7 +42,7 @@
                 <!-- start header top -->
                 <div class="header_top">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-               
+
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{route('home')}}">Home</a></li>
                     @if (Auth::guest())
@@ -169,14 +169,17 @@
     <section id="mainContent">
         <dic class="content_bottom">
             <div class="col-lg-9">
+
                 <div class="content_bottom_left">
                     <div class="single_page_area">
+
                         @yield('breadcrumb')
                         @if(Session::has('flash_message'))
                             <div class="alert alert-success">
                                 {{Session::get('flash_message')}}
                             </div>
                         @endif
+
                         @yield('content')
                     </div>
                 </div>

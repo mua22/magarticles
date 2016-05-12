@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Category;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,7 +16,8 @@ class ProfilesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {// $categoryList=Category::find(5);
+       // return view('articles.create',compact('categoryList'));
         $article = Article::find(5);
         return view('test')->with('data',$article);
     }
@@ -27,7 +29,8 @@ class ProfilesController extends Controller
      */
     public function create()
     {
-        //
+        //$categoryList=Category::all();
+        //return view('articles.create',compact('categoryList'));
     }
 
     /**
@@ -49,7 +52,10 @@ class ProfilesController extends Controller
      */
     public function show($id)
     {
-        //
+        //$articles = Article::find($id);
+
+        // show the view and pass the nerd to it
+        //return view('articles.show', compact('articles'));
     }
 
     /**
