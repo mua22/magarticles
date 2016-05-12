@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php 
+
+namespace App\Http\Controllers\Backend;
 
 use App\Article;
 use App\Category;
@@ -35,14 +37,14 @@ class ArticlesController extends Controller
 	public function index()
 	{
 		$articles = $this->articlesRepo->paginate(10);
-		return view('backend.admin.articles.index', compact('articles'));
+		return view('backend.articles.index', compact('articles'));
 	}
 
     public function create()
     {
     	$tagsList = $this->tagsRepo->lists('name', 'id');
 		$categoryList = $this->categoryRepo->getSelectlist();
-		return view('backend.admin.articles.create', compact('tagsList','categoryList'));
+		return view('backend.articles.create', compact('tagsList','categoryList'));
     }
 
     public function store(CreateArticles $request)
@@ -65,7 +67,7 @@ class ArticlesController extends Controller
         if($article) {
         	$tagsList = $this->tagsRepo->lists('name', 'id');
         	$categoryList = $this->categoryRepo->getSelectlist();
-        	return view('backend.admin.articles.edit', compact('article','tagsList','categoryList'));
+        	return view('backend.articles.edit', compact('article','tagsList','categoryList'));
         } else {
         	\Session::flash('flash_message','Article not found');
     		return redirect()->route('backend.articles.index');

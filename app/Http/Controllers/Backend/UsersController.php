@@ -1,29 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Backend;
 
-use App\Category;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\UsersRepository as User;
 
-class CategoriesController extends Controller
+class UsersController extends AppController
 {
+    /**
+     * UsersController constructor.
+     */
+    //private $user;
+    public function __construct(User $user)
+    {
+        parent::__construct($user);
+        //$this->user = $user;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    /*public function index()
     {
-        //return $category_slug;
-        $categories = Category::all();
-        $result = Category::descendantsOf(null);
-        $result = Category::withDepth()->having('depth', '=', 0)->with('descendants')->get();
-        //return $result;
-        return view('frontend.categories.index')->withCategories($result);
-    }
+        $records = $this->user->all();
+        return view('backend.users.index')->with(compact('records'));
+    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -54,8 +59,7 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        $cat = Category::findByTreeSlug($id);
-        return $cat;
+        //
     }
 
     /**

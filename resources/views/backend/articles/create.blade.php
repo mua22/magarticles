@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-	Editing Article {{$article->title}}
+	Create Articles
 @stop
 @section('content')
 	<div class="content">
@@ -9,9 +9,9 @@
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">{{$article->title}}</h3>
+						<h3 class="box-title">Create Articles</h3>
 					</div>
-					@include('backend.admin.articles.form', ['article' => $article]);
+					@include('backend.articles.form')
 				</div>
 			</div>
 		</div>

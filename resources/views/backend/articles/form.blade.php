@@ -14,13 +14,13 @@
 		</div>
 		<div class="form-group">
 			{{Form::label('category_at','Category:')}}
-			{{Form::select('category_id',$categoryList=[], isset($article->category_id)? $article->category_id: null, ['class'=>'form-control'])}}
+			{{Form::select('category_id',$categoryList, isset($article->category_id)? $article->category_id: null, ['class'=>'form-control'])}}
 		</div>
 
 
 		<div class="form-group">
 			{{Form::label('Tags','Tags:')}}
-			{{Form::select('tags[]', $tagsList=[], isset($article->id) ? $article->tags()->lists('id', 'id')->toArray() : [null], ['class'=>'form-control','multiple'])}}
+			{{Form::select('tags[]', $tagsList, isset($article->id) ? $article->tags()->lists('id', 'id')->toArray() : [null], ['class'=>'form-control','multiple'])}}
 		</div>
 		<div class="form-group">
 			{{Form::submit('Submit',['class'=>'btn btn-primary form-control'])}}

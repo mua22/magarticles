@@ -65,11 +65,11 @@ Route::group(['middleware' => ['web']], function () {
     // All web based admin backend routes starts from here.
     Route::group(['prefix' => 'backend', 'middleware' => ['role:admin']], function() {
         
-        Route::get('welcome', ['as' => 'backend.welcome', 'uses' => 'Admin\AdminController@welcome']);
+        Route::get('/', ['as' => 'backend.welcome', 'uses' => 'Backend\BackendController@welcome']);
         
-        Route::resource('articles', 'Admin\ArticlesController');
-        Route::resource('users', 'Admin\UsersController');
-        Route::resource('tags', 'Admin\TagsController');
+        Route::resource('articles', 'Backend\ArticlesController');
+        Route::resource('users', 'Backend\UsersController');
+        Route::resource('tags', 'Backend\TagsController');
     });
 
 });
