@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Tag;
+use App\Repositories\TagsRepository;
 use Illuminate\Support\Facades\Session;
 
 class TagsController extends Controller
 {
+
+    private $tagsRepo;
+
+    public function __construct (TagsRepository $tagsRepo)
+    {
+        $this->tagsRepo = $tagsRepo;
+    }
 
     /**
      * Display a listing of the resource.
@@ -18,7 +25,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $records = Tag::all();
+        $records = $this->tagsRepo->all();
         return view('backend.tags.index')->with(compact('records'));
     }
 
@@ -42,7 +49,7 @@ class TagsController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $tag = \App\Tag::create($input);
+        $tag = $this->tagsRepo->create($input);
         if($tag)
         {
             \Session::flash('flash_message','Tag Created Successfully');
@@ -73,7 +80,7 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        $record = \App\Tag::findOrfail($id);
+        $record = $this->tagsRepo->find($id);
         return view('backend.tags.edit')->with(compact('record'));
     }
 
@@ -86,14 +93,16 @@ class TagsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = \App\Tag::findOrFail($id);
-        $tag = $tag->fill($request->all())->save();
+        $tag = $this->tagsRepo->find($id);
+
         if($tag) {
+            $input = $request->except(['_token', '_method']);
+            $tag = $this->tagsRepo->update($input, $tag->id);
             \Session::flash('flash_message', 'Tag Created Updated');
             return redirect()->route('backend.tags.index');
         }else {
             \Session::flash('flash_message', 'Something Went Wrong');
-            return redirect()->route('backend.tags.edit',$id);
+            return redirect()->route('backend.tags.index');
         }
     }
 
@@ -105,9 +114,9 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
-        $tag = \App\Tag::find($id);
+        $tag = $this->tagsRepo->find($id);
         if($tag) {
-            $tag->delete($id);
+           $this->tagsRepo->delete($id);
             \Session::flash('flash_message', 'Tag deleted');
             return redirect()->route('backend.tags.index');
         } else {

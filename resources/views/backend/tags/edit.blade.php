@@ -3,5 +3,5 @@
 	 Editing {{$record->name}}
 @stop
 @section('content')
-	@include('backend.tags._form', ['record' => $record])
+	@include('backend.tags.form', ['record' => $record])
 @stop

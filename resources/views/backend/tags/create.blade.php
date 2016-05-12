@@ -3,5 +3,5 @@
 	Create New tag
 @stop
 @section('content')
-	@include('backend.tags._form')
+	@include('backend.tags.form')
 @stop
