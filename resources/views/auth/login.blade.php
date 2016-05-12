@@ -1,7 +1,6 @@
-@extends('site.master')
+@extends('frontend.master')
 
 @section('content')
-
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
 

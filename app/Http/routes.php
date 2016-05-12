@@ -12,66 +12,27 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('/',['as' => 'homepage', 'uses' => 'Frontend\HomeController@homepage']);
+    Route::get('article/{slug}',['as' => 'frontend.article.show','uses' => 'Frontend\ArticleController@show']);
+    // Not implemented yet so commented.
+/*    Route::get('category/{any?}', [
+            'as' => 'category',
+            'uses' => 'Frontend\CategoriesController@index'
+        ])->where('any', '(.*)?');
 
-    Route::get('/',array(
-        'uses'=>'FrontEnd\ArticlesController@index',
-        'as' => 'home'
-    ));
+    Route::get('/profile','ProfilesController@index');
+    Route::get('/students', 'StudentsController@index');
+    Route::get('/articles','ArticlesController@index');*/
 
-    Route::get('category/{any?}',array(
-        'uses' => 'FrontEnd\ArticlesController@index',
-        'as'=>'category'
-    ))->where('any', '(.*)?');
-    Route::get('/events/calendar',array(
-        'uses'=>'FrontEnd\EventsController@calendar',
-        'as'=>'events.calendar'
-    ));
-    Route::get('/events/calendar/ajax',array(
-        'uses'=>'FrontEnd\EventsController@getAjaxEvents',
-        'as'=>'events.calendar.ajax'
-    ));
-
-    Route::get('articles/{any?}',array(
-        'uses' => 'FrontEnd\ArticlesController@show',
-        'as'=>'frontend.articles.show'
-    ));
-    Route::post('articles','FrontEnd\ArticlesController@store');
-
-    //Route::get('/profile','ProfilesController@index');
-    //Route::get('/students', 'StudentsController@index');
-    /*Route::get('/articles','ArticlesController@index');
-    Route::get('/articles/create','ArticlesController@create');
-
-    Route::post('articles','ArticlesController@store');*/
-    //Route::resource('categories','Admin\CategoriesController');
-    Route::get('/categories',array(
-        'uses'=>'FrontEnd\ArticlesController@index',
-        'as' => 'site.categories'
-    ));
-
-    //Route::resource('articles','ArticlesController');
-    //Route::controller('posts', 'ArticlesController');
-    Route::get('/about','PagesController@about');
-    Route::get('/contact','PagesController@contact');
-    Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
-    Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');
-    Route::controllers([
-        'auth'=>'Auth\AuthController',
-        'password'=>'Auth\PasswordController'
-    ]);
-
-        Route::auth();
-
+    Route::auth();
     // All web based admin backend routes starts from here.
     Route::group(['prefix' => 'backend', 'middleware' => ['role:admin']], function() {
-        
-        Route::get('/', ['as' => 'backend.welcome', 'uses' => 'Backend\BackendController@welcome']);
-        
+
+        Route::get('/', ['as' => 'backend.dashboard', 'uses' => 'Backend\BackendController@dashboard']);
+
         Route::resource('articles', 'Backend\ArticlesController');
         Route::resource('users', 'Backend\UsersController');
         Route::resource('tags', 'Backend\TagsController');
     });
 
 });
-
-

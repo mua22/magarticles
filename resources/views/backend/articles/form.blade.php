@@ -10,7 +10,7 @@
 		</div>
 		<div class="form-group">
 			<label for="date">Date:</label>
-			<input class="form-control" type="date" name="date" value="{{isset($article->title)? $article->published_at->format('d/m/Y'): date('Y-m-d')}}"/>
+			<input class="form-control" type="date" name="date" value="{{isset($article->title)? $article->published_at->format('d/m/Y'): date('d/m/Y')}}"/>
 		</div>
 		<div class="form-group">
 			<select class="form-control" name="category_id">
