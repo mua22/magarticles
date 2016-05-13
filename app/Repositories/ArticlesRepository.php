@@ -22,7 +22,7 @@ class ArticlesRepository extends Repository
     public function create(array $data) {
     	$article = parent::create($data);
     	if($article !== null) {
-    		$article->tags()->attach($data['tags']);
+    		$article->tags()->sync($data['tags']);
     	}
     	
     	return $article;
@@ -36,7 +36,7 @@ class ArticlesRepository extends Repository
         unset($data['tags']);
         if($article) {
             $article->update($data);
-            $article->tags()->attach($tags);
+            $article->tags()->sync($tags);
             return $article;
         }
     }

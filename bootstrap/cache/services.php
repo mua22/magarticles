@@ -22,17 +22,16 @@
     18 => 'Illuminate\\Translation\\TranslationServiceProvider',
     19 => 'Illuminate\\Validation\\ValidationServiceProvider',
     20 => 'Illuminate\\View\\ViewServiceProvider',
-    21 => 'Collective\\Html\\HtmlServiceProvider',
-    22 => 'App\\Providers\\AppServiceProvider',
-    23 => 'App\\Providers\\AuthServiceProvider',
-    24 => 'App\\Providers\\EventServiceProvider',
-    25 => 'App\\Providers\\RouteServiceProvider',
-    26 => 'Cviebrock\\EloquentSluggable\\SluggableServiceProvider',
-    27 => 'Laravel\\Socialite\\SocialiteServiceProvider',
-    28 => 'YAAP\\Theme\\ThemeServiceProvider',
-    29 => 'Zizaco\\Entrust\\EntrustServiceProvider',
-    30 => 'DaveJamesMiller\\Breadcrumbs\\ServiceProvider',
-    31 => 'App\\Providers\\RepositoryProvider',
+    21 => 'App\\Providers\\AppServiceProvider',
+    22 => 'App\\Providers\\AuthServiceProvider',
+    23 => 'App\\Providers\\EventServiceProvider',
+    24 => 'App\\Providers\\RouteServiceProvider',
+    25 => 'Cviebrock\\EloquentSluggable\\SluggableServiceProvider',
+    26 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    27 => 'YAAP\\Theme\\ThemeServiceProvider',
+    28 => 'Zizaco\\Entrust\\EntrustServiceProvider',
+    29 => 'DaveJamesMiller\\Breadcrumbs\\ServiceProvider',
+    30 => 'App\\Providers\\RepositoryProvider',
   ),
   'eager' => 
   array (
@@ -139,10 +138,6 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
-    'html' => 'Collective\\Html\\HtmlServiceProvider',
-    'form' => 'Collective\\Html\\HtmlServiceProvider',
-    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
-    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'Laravel\\Socialite\\Contracts\\Factory' => 'Laravel\\Socialite\\SocialiteServiceProvider',
     'command.repository.make' => 'App\\Providers\\RepositoryProvider',
     'command.criteria.make' => 'App\\Providers\\RepositoryProvider',
@@ -183,9 +178,6 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
-    array (
-    ),
-    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
     'Laravel\\Socialite\\SocialiteServiceProvider' => 
