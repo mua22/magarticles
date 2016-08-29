@@ -23,11 +23,7 @@ class ArticlesController extends Controller
 
 	private $categoryRepo;
 
-	public function __construct (
-		ArticlesRepository $articlesRepo,
-		TagsRepository $tagsRepo,
-		CategoryRepository $categoryRepo
-		)
+	public function __construct (ArticlesRepository $articlesRepo,TagsRepository $tagsRepo,	CategoryRepository $categoryRepo)
 	{
 		$this->articlesRepo = $articlesRepo;
 		$this->tagsRepo = $tagsRepo;

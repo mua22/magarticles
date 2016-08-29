@@ -17,7 +17,7 @@ class AdminViewsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:view {model : The model Name} {--f|folder= : The parent folder name inside views directory}';
+    protected $signature = 'make:view {model : The model Name} {--f|folder : The parent folder name inside views directory}';
 
     /**
      * The console command description.
