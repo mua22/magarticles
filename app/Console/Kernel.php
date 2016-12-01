@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
         Commands\Inspire::class,
         Commands\MakeCriteriaCommand::class,
         Commands\MakeRepositoryCommand::class,
-        Commands\AdminViewsCommand::class
+        Commands\AdminViewsCommand::class,
+        Commands\FooCommand::class
     ];
 
     /**
