@@ -1,7 +1,7 @@
-#magarticles
-##Introduction
+# magarticles
+## Introduction
 magArticles is a an axample Laravel 5 project for the Classes of Web Technologies in COMSATS Lahore Campus by Muhammad Usman Akram
-##Installation
+## Installation
 Clone this git Repository in your Computer and open the command prompt and go to your location e.g. if you have downloaded in 'F:/magarticles' then 
 
     cd F:/magarticles 
@@ -15,19 +15,19 @@ Now you can access your project at localhost:8000
 
     username: admin@admin.com
     password: admin
-##Commands Available 
+## Commands Available 
 Apart from usual php artisan commands you can try following 
 
     php artisan make:view Tag
     php artisan make:view Tag -f backend
     Tag is the model name and backend is the folder which you want to use to create views inside. 
     e.g. -f backend.admin would create views inside backend\admin\tags folder
-###Pre Requisites
+### Pre Requisites
 php and composer should be installed and setup in path variables.
-##Contact Me
+## Contact Me
  You can contact me at 'musmanakram at ciitlahore dot edu dot pk' or at http://www.usman-blog.com 
  
- Demo available at articles.usman-blog.com 
+ Demo available at http://articles.usman-blog.com 
  
  
  
